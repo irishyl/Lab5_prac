@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 
 def main(spark):
-    df = spark.read.csv("data.csv") 
+    df = spark.read.csv("data.csv", header=True, inferSchema=True) 
     filtered_df = df.filter(df.age > 30)
     grouped_df = filtered_df.groupBy("city").count()
 
